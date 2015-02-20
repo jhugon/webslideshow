@@ -22,7 +22,7 @@ class App(object):
     def __init__(self):
         window = Gtk.Window()
         window.connect("delete-event",self.quit)
-        window.connect("key_press_event",self.on_key_press)
+        window.connect("key-press-event",self.on_key_press)
 
         webView = WebKit.WebView()
         window.add(webView)
@@ -31,11 +31,20 @@ class App(object):
         self.window = window
         self.webView = webView
 
+        self.is_fullscreen = False
+
     def on_key_press(self,widget,event):
         keyname = Gdk.keyval_name(event.keyval)
         #print("key pressed",keyname)
         if keyname == "q" or keyname == "Escape":
           self.quit()
+        if keyname == "f":
+          if self.is_fullscreen:
+            self.window.unfullscreen()
+            self.is_fullscreen = False
+          else:
+            self.window.fullscreen()
+            self.is_fullscreen = True
 
     def quit(self,*args,**kargs):
         #print("Quiting webslideshow...")
