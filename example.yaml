@@ -1,0 +1,15 @@
+%YAML 1.2 
+---
+
+default_profile: default # must be one of the profile names below
+default_page_time: 5  # in seconds
+
+profiles:
+  default:
+    page_list:
+      - http://google.com
+      - http://radar.weather.gov/ridge/Conus/southeast_loop.php
+  alternate:
+    page_time: 30  # in seconds
+    page_list:
+      - http://radar.weather.gov/ridge/Conus/RadarImg/southeast.gif
